@@ -51,6 +51,11 @@ $(function() {
                                 <span class="glyphicon glyphicon-remove"></span>\
                             </button>\
                         </td>\
+                        <td>\
+                            <button class="btn btn-success goToLogs">\
+                                Logs\
+                            </button>\
+                        </td>\
                     </tr>';
                     var templateHb = Handlebars.compile(template);
                     $("#serviceRows").append(templateHb(msg));
@@ -247,6 +252,12 @@ $(function() {
                 $("#alertingSubmit").text("Submit");
             });
         return false;
+    });
+    
+    $("#serviceRows").on("click", ".goToLogs", function() {
+        var clickedButton = $(this);
+        window.location = "http://localhost:8080/logs/"+clickedButton.parents("tr").data("id");
+        console.log("HI IVE BEEN CLICKED");
     });
     
 });

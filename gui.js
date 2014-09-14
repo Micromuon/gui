@@ -8,11 +8,12 @@ var express = require("express"),
 // Queries discovery for wrapperapi port number
 var wrapperPort;
 pubsubChannel.on("discovery:serviceInfo", function(data) {
-    if (data.serviceInfo[0].status == "running" && data.serviceName == "sea-microservices/microservices-wrapperapi"){
+    console.log(data);
+    if (data.serviceInfo[0].status == "running" && data.serviceName == "Micromuon/apiwrapper"){
         wrapperPort = data.serviceInfo[0].port;
     }
 });
-pubsubChannel.emit("discovery:getInfo", {name: "sea-microservices/microservices-wrapperapi"});
+pubsubChannel.emit("discovery:getInfo", {name: "Micromuon/apiwrapper"});
 
 app.engine("hbs", expressHandlebars({
     extname: "hbs",
