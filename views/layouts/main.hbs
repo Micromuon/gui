@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Microservices GUI</title>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/resources/style.css" rel="stylesheet">
+        <script>var wrapperPort = "{{wrapperPort}}";</script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="/resources/handlebars-v2.0.0.js"></script>
+    </head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Microservices</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li id="nav-services"><a href="/">Services</a></li>
+                    <li id="nav-logs"><a href="/logs">Logs</a></li>
+                    <li id="nav-alerts"><a href="/alerts">Alerts</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+
+    {{{body}}}
+
+    </div>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        $(function() {
+            $(".nav li").removeClass();
+            var navItem = (window.location.pathname == "/") ? "services" : window.location.pathname.substring(1);
+            $("#nav-" + navItem).addClass("active");
+        });
+    </script>
+</body>
+</html>

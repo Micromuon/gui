@@ -1,0 +1,10 @@
+/* Add space at top of page to push content down under fixed nav bar */
+@media (min-width: 980px) {
+    body {
+        padding-top: 60px;
+    }
+}
+
+.table .btn {
+    width: 100%;
+}

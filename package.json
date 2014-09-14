@@ -1,0 +1,20 @@
+{
+    "name": "gui",
+    "description": "Serves web GUI",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "start": "node gui",
+        "test": "./node_modules/mocha/bin/mocha -R xunit | grep \"<\" > test-reports.xml"
+    },
+    "dependencies": {
+        "express": "*",
+        "express-handlebars": "*",
+        "bootstrap": "*",
+        "node-redis-pubsub-fork": "*",
+        "superagent": "*"
+    },
+    "devDependencies": {
+        "mocha": "*"
+    }
+}

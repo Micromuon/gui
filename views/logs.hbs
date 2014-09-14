@@ -1,0 +1,20 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Service Name</th>
+        <th>Channel</th>
+        <th>Information</th>
+        <th>Timestamp</th>
+    </tr>
+    </thead>
+    <tbody id="logRows">
+        {{#each log}}
+            <tr data-id="{{this._id}}">
+                <td>{{../serviceName}}</td>
+                <td>{{this.channel}}</td>
+                <td>{{this.stringedInfo}}</td>
+                <td>{{this.timeStamp}}</td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>
