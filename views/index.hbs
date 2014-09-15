@@ -62,13 +62,13 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="localURL">URL to check</label>
-                        <input required type="url" class="form-control" id="localURL" placeholder="Enter Git URL for your service">
+                        <input required type="url" class="form-control" id="localURL" placeholder="Enter URL to healthcheck (e.g. http://localhost:<port number>)">
                         <label for="frequency">Healthcheck Frequency</label>
-                        <input required type="text" class="form-control" id="frequency" placeholder="Enter Git URL for your service">
+                        <input required type="text" class="form-control" id="frequency" placeholder="Enter cron pattern for healthcheck frequency (e.g. '* * * * * * ')">
                         <label for="expectedResStatus">Expected HTTP Response Status</label>
-                        <input required type="number" class="form-control" id="expectedResStatus" placeholder="Enter Git URL for your service">
+                        <input required type="number" class="form-control" id="expectedResStatus" placeholder="Enter expected HTTP response code (e.g. 200)">
                         <label for="expectedResBody">Expected HTTP Response Body</label>
-                        <input required type="text" class="form-control" id="expectedResBody" placeholder="Enter Git URL for your service">
+                        <input required type="text" class="form-control" id="expectedResBody" placeholder="Enter expected HTTP response body">
                         <input type="hidden" value="" id="healthId">
                         <input type="hidden" value="" id="healthExists">
                     </div>
@@ -93,9 +93,9 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="emails">Email Addresses (Separated by commas)</label>
-                        <input required type="text" class="form-control" id="emails" placeholder="Enter Git URL for your service">
+                        <input required type="text" class="form-control" id="emails" placeholder="Enter email addresses separated by commas">
                         <label for="alertFrequency">Alerting Frequency</label>
-                        <input required type="text" class="form-control" id="alertFrequency" placeholder="Enter Git URL for your service">
+                        <input required type="text" class="form-control" id="alertFrequency" placeholder="Enter max. email frequency in seconds">
                         <input type="hidden" value="" id="alertId">
                         <input type="hidden" value="" id="alertingExists">
                     </div>
@@ -121,7 +121,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="gitUrl">Git URL</label>
-                        <input type="text" class="form-control" id="gitUrl" placeholder="Enter Git URL for your service" pattern="[\w-.]+@[\w-.]+:[\w-]+\/[\w-]+\.git">
+                        <input type="text" class="form-control" id="gitUrl" placeholder="Enter Git URL for your service" pattern="https:\/\/+github.com+\/[\w-]+\/[\w-]+\.git">
                     </div>
                 </div>
                 <div class="modal-footer">
