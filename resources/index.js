@@ -22,7 +22,7 @@ $(function() {
             $("#deploySubmit").text("Deploying...");
             $.ajax({
                 type: "PUT",
-                url: "http://localhost:" + wrapperPort + "/deployer/deploy",
+                url: "http://127.0.0.1:" + wrapperPort + "/deployer/deploy",
                 data: {url: $("#gitUrl").val()}
             })
                 .done(function (msg) {
@@ -80,7 +80,7 @@ $(function() {
         var action = clickedButton.hasClass("btn-danger") ? "stop" : "start";
         $.ajax({
             type: "PUT",
-            url: "http://localhost:" + wrapperPort + "/deployer/" + action + "/" + clickedButton.parents("tr").data("id")
+            url: "http://127.0.0.1:" + wrapperPort + "/deployer/" + action + "/" + clickedButton.parents("tr").data("id")
         })
             .done(function(data) {
                 console.log(data);
@@ -113,7 +113,7 @@ $(function() {
             $("#deleteSubmit").text("Deleting...");
             $.ajax({
                 type: "DELETE",
-                url: "http://localhost:" + wrapperPort + "/deployer/delete/" + $("#deleteId").val()
+                url: "http://127.0.0.1:" + wrapperPort + "/deployer/delete/" + $("#deleteId").val()
             })
                 .done(function (msg) {
                     console.log(msg);
@@ -139,7 +139,7 @@ $(function() {
         if ($(this).parents("tr").find(".runningStatus").find("span").hasClass("glyphicon-stop")) {
             $.ajax({
             type: "GET",
-            url: "http://localhost:" + wrapperPort + "/healthcheck/query/" + clickedButton.parents("tr").data("id")
+            url: "http://127.0.0.1:" + wrapperPort + "/healthcheck/query/" + clickedButton.parents("tr").data("id")
         })
             .done(function(data) {
                 console.log(data);
@@ -170,9 +170,9 @@ $(function() {
     $("#healthUpdate").submit(function () {
         $("#healthcheckModal button").add("#healthcheckModal input").prop("disabled", true);
         $("#healthSubmit").text("Updating...");
-        var url = "http://localhost:" + wrapperPort + "/healthcheck/submit";
+        var url = "http://127.0.0.1:" + wrapperPort + "/healthcheck/submit";
         if ($("#healthExists").val() == "yes") {
-            url = "http://localhost:" + wrapperPort + "/healthcheck/update/" + $("#healthId").val();
+            url = "http://127.0.0.1:" + wrapperPort + "/healthcheck/update/" + $("#healthId").val();
         }
         $.ajax({
             type: "PUT",
@@ -204,7 +204,7 @@ $(function() {
         var clickedButton = $(this);
         $.ajax({
             type: "GET",
-            url: "http://localhost:" + wrapperPort + "/alerting/query/" + clickedButton.parents("tr").data("id")
+            url: "http://127.0.0.1:" + wrapperPort + "/alerting/query/" + clickedButton.parents("tr").data("id")
         })
         .done(function(data) {
             console.log(data);
@@ -228,9 +228,9 @@ $(function() {
     $("#alertingUpdate").submit(function () {
         $("#alertingModal button").add("#alertingModal input").prop("disabled", true);
         $("#alertingSubmit").text("Updating...");
-        var url = "http://localhost:" + wrapperPort + "/alerting/save";
+        var url = "http://127.0.0.1:" + wrapperPort + "/alerting/save";
         if ($("#alertingExists").val() == "yes") {
-            url = "http://localhost:" + wrapperPort + "/alerting/update/" + $("#alertId").val();
+            url = "http://127.0.0.1:" + wrapperPort + "/alerting/update/" + $("#alertId").val();
         }
         $.ajax({
                 type: "PUT",
@@ -256,8 +256,9 @@ $(function() {
     
     $("#serviceRows").on("click", ".goToLogs", function() {
         var clickedButton = $(this);
-        window.location = "http://localhost:8080/logs/"+clickedButton.parents("tr").data("id");
-        console.log("HI IVE BEEN CLICKED");
+        var service = clickedButton.parents("tr").data("id").split("/")[1];
+        window.location = "http://127.0.0.1:8080/logs/"+service;
+
     });
     
 });
